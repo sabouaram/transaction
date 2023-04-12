@@ -3,7 +3,6 @@ package models
 import (
 	"errors"
 	"github.com/sabouaram/transaction/sql"
-	"log"
 )
 
 const (
@@ -52,10 +51,9 @@ func (user *User) DeleteUser() error {
 		return errors.New("SQL ERROR")
 	}
 	defer stmt.Close()
-	res, err := stmt.Exec(user.Id)
+	_, err = stmt.Exec(user.Id)
 	if err != nil {
 		return errors.New("SQL ERROR")
-		log.Println(" >> DELETE REQUEST SQL SERVICE ERROR:%v", res, err)
 	}
 	return nil
 }
