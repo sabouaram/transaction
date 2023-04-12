@@ -80,7 +80,7 @@ func MakeTransaction(w http.ResponseWriter, r *http.Request) {
 		respondWithError(w, http.StatusBadRequest, "Invalid Receiver ID")
 	}
 	if transaction.Amount > sender.Balance {
-		respondWithError(w, http.StatusInternalServerError, "Invalid operation")
+		respondWithError(w, http.StatusBadRequest, "Invalid operation")
 	} else {
 		sender.Balance = sender.Balance - transaction.Amount
 		sender.UpdateUser()
