@@ -32,7 +32,8 @@ To delete a user, send a DELETE request to `/users/{id}` where `{id}` is the use
 ## Transactions
 
 ### Make a transaction
-To make a transaction between two users, send a POST request to `/transactions` with the following fields in the request body:
+To make a transaction between two users, send a POST request to
+`/transactions` with the following fields in the request body:
 `
 {
 "from_id": "03eb9399-e526-431f-812f-2fda01659000",
@@ -41,3 +42,22 @@ To make a transaction between two users, send a POST request to `/transactions` 
 }
 `
 The `from_id` field is the ID of the user making the transfer, while the `to_id` field is the ID of the user receiving the transfer. The `amount` field is the amount of the transfer.
+
+## SQL
+This API uses a SQL database to store user account informations.
+To change the SQL configuration, you must modify the variables in `sql/sql_connection`.
+We have to create a users table using this query: \
+`
+CREATE TABLE users (\
+    id VARCHAR(255) PRIMARY KEY,\
+    name VARCHAR(255) NOT NULL,\
+    balance FLOAT NOT NULL
+); 
+`
+
+## Running the main
+When running the main.go all the users located in https://git.io/Jm76h will be parsed and stored in the database users table.
+
+
+
+
