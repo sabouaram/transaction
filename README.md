@@ -48,9 +48,9 @@ This API uses a SQL database to store user account informations.
 To change the SQL configuration, you must modify the variables in `sql/sql_connection`.
 We have to create a users table using this query: \
 `
-CREATE TABLE users (\
-    id VARCHAR(255) PRIMARY KEY,\
-    name VARCHAR(255) NOT NULL,\
+CREATE TABLE users (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
     balance FLOAT NOT NULL
 ); 
 `
